@@ -3,7 +3,7 @@ import React,{useState,useEffect} from "react";
 
 function Data() {
     const [api,setAPI] = useState({loading:true,data:null});
-    const sometin = ['Milahn','Pieter','Johan']
+    // const sometin = ['Milahn','Pieter','Johan']
     useEffect(()=>{
         setAPI({loading:true,data:null});
         fetch('https://jsonplaceholder.typicode.com/comments')
@@ -13,11 +13,12 @@ function Data() {
         });
         
     },[]);
+
     return (
         <div className="data">
             <ul>
                {api.data.map((info)=>{
-                   <li>
+                   <li key={info.postId}>
                        Name:{info.name}
                        ID: {info.postId}
                    </li>
